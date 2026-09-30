@@ -68,8 +68,8 @@ io.on("connection", (socket) => {
         `Room ${roomId} currently has ${roomSize} user(s)`
       );
 
-      // Maximum 2 users
-      if (roomSize >= 2) {
+      // Maximum 4 users
+      if (roomSize >= 4) {
         socket.emit(
           "room-full"
         );
