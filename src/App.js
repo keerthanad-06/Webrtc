@@ -58,6 +58,14 @@ function App() {
     useState(false);
 
   // ==========================================
+  // SIGNALING SERVER URL
+  // ==========================================
+
+  const SIGNALING_SERVER_URL =
+    process.env.REACT_APP_SIGNALING_URL ||
+    "https://192.168.0.112:5000";
+
+  // ==========================================
   // START CAMERA + MICROPHONE
   // ==========================================
 
@@ -300,12 +308,17 @@ function App() {
       "Starting Socket.IO connection..."
     );
 
+    console.log(
+      "Signaling server:",
+      SIGNALING_SERVER_URL
+    );
+
     // ========================================
-    // HTTPS SOCKET.IO
+    // SOCKET.IO
     // ========================================
 
     socketRef.current = io(
-      "https://192.168.0.112:5000",
+      SIGNALING_SERVER_URL,
       {
         // Polling first for HTTPS testing
         transports: ["polling"],
